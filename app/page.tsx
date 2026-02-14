@@ -243,8 +243,8 @@ export default function Home() {
       <section className="relative min-h-[100dvh] flex flex-col justify-center items-center text-center px-5 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-bg.webp"
-            alt="새차만들기 매장"
+            src="/hero-bg1.webp"
+            alt="새차만들기 프리미엄 광택"
             fill
             className="object-cover scale-105"
             priority
