@@ -254,6 +254,24 @@ export default function Home() {
         </div>
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/8 rounded-full blur-[180px] z-0 animate-glow-pulse" />
 
+        {/* Sparkle Particles */}
+        <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div
+              key={i}
+              className="sparkle-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 6}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+                width: `${2 + Math.random() * 4}px`,
+                height: `${2 + Math.random() * 4}px`,
+              }}
+            />
+          ))}
+        </div>
+
         {heroVisible && (
           <div className="relative z-10 w-full max-w-5xl mx-auto">
             <div className="animate-slide-up inline-flex items-center gap-2 px-5 py-2.5 mb-8 rounded-full border border-blue-500/30 bg-blue-500/5 backdrop-blur-sm">
