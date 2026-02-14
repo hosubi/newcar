@@ -67,9 +67,8 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   verification: {
-    google: "G-RQTK8HSBL0",
     other: {
-      "naver-site-verification": "73cf5828caedf337eaaa7a3f46b74203ccf2eca1",
+      "naver-site-verification": "422762e390ad6695dd59fa32d95587f2f433666e",
     },
   },
   category: "business",
@@ -159,7 +158,7 @@ export default function RootLayout({
 
         {/* Google Analytics 4 */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-RQTK8HSBL0"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZTBL18N0CZ"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -167,7 +166,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-RQTK8HSBL0');
+            gtag('config', 'G-ZTBL18N0CZ');
           `}
         </Script>
       </body>

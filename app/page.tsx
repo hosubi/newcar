@@ -4,6 +4,19 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+// GA4 이벤트 트래킹 헬퍼
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+function trackEvent(eventName: string, params?: Record<string, string | number>) {
+  if (typeof window !== "undefined" && window.gtag) {
+    window.gtag("event", eventName, params);
+  }
+}
 import {
   Sparkles, Phone, Star, ChevronDown, ChevronLeft, ChevronRight, Clock, MapPin,
   Droplets, Wrench, CreditCard, Headphones, ShieldCheck,
@@ -91,6 +104,7 @@ export default function Home() {
 
   const handleChatSelect = useCallback((value: string) => {
     if (chatStep === 0) {
+      trackEvent("chatbot_select_service", { service: value });
       setChatHistory((prev) => [
         ...prev,
         { role: "bot", text: chatData.root.question },
@@ -99,6 +113,7 @@ export default function Home() {
       setChatCategory(value);
       setChatStep(1);
     } else if (chatStep === 1) {
+      trackEvent("chatbot_select_size", { service: chatCategory, size: value });
       const catData = chatData[chatCategory];
       setChatHistory((prev) => [
         ...prev,
@@ -107,6 +122,7 @@ export default function Home() {
       ]);
       setChatSub(value);
       setChatStep(2);
+      trackEvent("chatbot_view_quote", { service: chatCategory, size: value });
     }
   }, [chatStep, chatCategory, chatData]);
 
@@ -118,7 +134,10 @@ export default function Home() {
   }, []);
 
   const toggleChat = useCallback(() => {
-    setChatOpen((prev) => !prev);
+    setChatOpen((prev) => {
+      if (!prev) trackEvent("chatbot_open");
+      return !prev;
+    });
   }, []);
 
   // 챗봇 메시지 변경 시 스크롤 아래로
@@ -372,6 +391,7 @@ export default function Home() {
           <div data-aos="fade-up" className="text-center mt-10">
             <a
               href={`tel:${phoneNumber.replace(/-/g, "")}`}
+              onClick={() => trackEvent("phone_call", { location: "why_choose_us" })}
               className="inline-flex items-center gap-2.5 bg-blue-600 text-white font-bold text-base md:text-lg py-4 px-10 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.25)]"
             >
               <Phone className="w-5 h-5" />
@@ -527,6 +547,7 @@ export default function Home() {
           <div data-aos="fade-up" className="text-center">
             <a
               href={`tel:${phoneNumber.replace(/-/g, "")}`}
+              onClick={() => trackEvent("phone_call", { location: "service_menu" })}
               className="inline-flex items-center gap-2.5 bg-blue-600 text-white font-bold text-base md:text-lg py-4 px-10 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.25)]"
             >
               <Phone className="w-5 h-5" />
@@ -719,6 +740,7 @@ export default function Home() {
               </p>
               <a
                 href={`tel:${phoneNumber.replace(/-/g, "")}`}
+                onClick={() => trackEvent("phone_call", { location: "contact_section" })}
                 className="group inline-flex items-center gap-3 bg-blue-600 text-white text-xl md:text-2xl font-bold py-5 px-12 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_40px_rgba(37,99,235,0.3)]"
               >
                 <Phone className="w-6 h-6" />
@@ -742,11 +764,11 @@ export default function Home() {
               <p>주소: 부산 사상구 (상세주소 추후 안내)</p>
               <p>업종: 자동차 광택, 스팀세차, 실내세차, 유리막코팅</p>
               <div className="flex gap-3 mt-3">
-                <a href={naverPlaceLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+                <a href={naverPlaceLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("outbound_click", { destination: "naver_place" })} className="text-blue-400 hover:text-blue-300 transition-colors">
                   네이버 플레이스
                 </a>
                 <span className="text-gray-600">|</span>
-                <a href={blogLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+                <a href={blogLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("outbound_click", { destination: "blog" })} className="text-blue-400 hover:text-blue-300 transition-colors">
                   블로그
                 </a>
               </div>
@@ -754,7 +776,7 @@ export default function Home() {
           </div>
           <div className="md:text-right">
             <p className="text-gray-400 text-sm mb-3">문의 전화</p>
-            <a href={`tel:${phoneNumber.replace(/-/g, "")}`} className="text-2xl md:text-3xl font-bold text-white hover:text-blue-500 transition-colors">
+            <a href={`tel:${phoneNumber.replace(/-/g, "")}`} onClick={() => trackEvent("phone_call", { location: "footer" })} className="text-2xl md:text-3xl font-bold text-white hover:text-blue-500 transition-colors">
               {phoneNumber}
             </a>
             <p className="text-gray-500 text-sm mt-2">평일 09:00~19:00</p>
@@ -864,6 +886,7 @@ export default function Home() {
                         <div className="flex flex-wrap gap-2">
                           <a
                             href={`tel:${phoneNumber.replace(/-/g, "")}`}
+                            onClick={() => trackEvent("phone_call", { location: "chatbot_quote", service: chatCategory, size: chatSub })}
                             className="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-bold px-5 py-2.5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)]"
                           >
                             <Phone className="w-4 h-4" />
@@ -931,6 +954,7 @@ export default function Home() {
           <div className="flex items-center justify-center gap-3 mt-2">
             <a
               href={`tel:${phoneNumber.replace(/-/g, "")}`}
+              onClick={() => trackEvent("phone_call", { location: "bottom_bar" })}
               className="flex items-center gap-1.5 text-gray-400 hover:text-blue-400 text-xs font-medium transition-colors"
             >
               <Phone className="w-3.5 h-3.5" />
@@ -941,6 +965,7 @@ export default function Home() {
               href={blogLink}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("outbound_click", { destination: "blog_bottom_bar" })}
               className="flex items-center gap-1.5 text-gray-400 hover:text-green-400 text-xs font-medium transition-colors"
             >
               <MessageCircle className="w-3.5 h-3.5" />
@@ -953,6 +978,7 @@ export default function Home() {
       {/* ━━━ FLOATING PHONE BUTTON ━━━ */}
       <a
         href={`tel:${phoneNumber.replace(/-/g, "")}`}
+        onClick={() => trackEvent("phone_call", { location: "floating_button" })}
         className="fixed right-4 bottom-[calc(env(safe-area-inset-bottom,0px)+100px)] z-[59] w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:scale-110 active:scale-95 transition-all duration-300 animate-float"
         aria-label="전화 걸기"
       >
