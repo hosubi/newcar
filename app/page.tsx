@@ -793,6 +793,32 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 네이버 지도 임베드 */}
+            <div data-aos="fade-up" className="relative z-10 mb-10 rounded-2xl overflow-hidden border border-gray-800">
+              <iframe
+                src="https://map.naver.com/p/entry/place/2003734983?c=15.00,0,0,0,dh"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="새차만들기 네이버 지도"
+              />
+              <a
+                href={naverPlaceLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("outbound_click", { destination: "naver_map_embed" })}
+                className="block bg-[#03C75A] text-white text-center py-3 font-bold text-sm hover:bg-[#02b351] transition-colors"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  네이버 플레이스에서 보기 →
+                </span>
+              </a>
+            </div>
+
             <div className="text-center relative z-10">
               <p className="text-base md:text-lg font-bold mb-5 text-gray-200">
                 지금 바로 문의하세요!
@@ -1021,6 +1047,17 @@ export default function Home() {
             </a>
             <span className="text-gray-700">|</span>
             <a
+              href={naverPlaceLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("outbound_click", { destination: "naver_place_bottom_bar" })}
+              className="flex items-center gap-1.5 text-gray-400 hover:text-[#03C75A] text-xs font-medium transition-colors"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              지도
+            </a>
+            <span className="text-gray-700">|</span>
+            <a
               href={blogLink}
               target="_blank"
               rel="noopener noreferrer"
@@ -1034,15 +1071,27 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ━━━ FLOATING PHONE BUTTON ━━━ */}
-      <a
-        href={`tel:${phoneNumber.replace(/-/g, "")}`}
-        onClick={() => trackEvent("phone_call", { location: "floating_button" })}
-        className="fixed right-4 bottom-[calc(env(safe-area-inset-bottom,0px)+100px)] z-[59] w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:scale-110 active:scale-95 transition-all duration-300 animate-float"
-        aria-label="전화 걸기"
-      >
-        <Phone className="w-6 h-6 text-white" />
-      </a>
+      {/* ━━━ FLOATING BUTTONS ━━━ */}
+      <div className="fixed right-4 bottom-[calc(env(safe-area-inset-bottom,0px)+100px)] z-[59] flex flex-col gap-3">
+        <a
+          href={naverPlaceLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackEvent("outbound_click", { destination: "naver_place_floating" })}
+          className="w-14 h-14 bg-[#03C75A] rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(3,199,90,0.4)] hover:scale-110 active:scale-95 transition-all duration-300"
+          aria-label="네이버 플레이스"
+        >
+          <MapPin className="w-6 h-6 text-white" />
+        </a>
+        <a
+          href={`tel:${phoneNumber.replace(/-/g, "")}`}
+          onClick={() => trackEvent("phone_call", { location: "floating_button" })}
+          className="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(37,99,235,0.5)] hover:scale-110 active:scale-95 transition-all duration-300 animate-float"
+          aria-label="전화 걸기"
+        >
+          <Phone className="w-6 h-6 text-white" />
+        </a>
+      </div>
     </div>
   );
 }
