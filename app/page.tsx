@@ -793,28 +793,26 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 네이버 지도 임베드 */}
+            {/* 지도 (OpenStreetMap + 네이버 플레이스 버튼) */}
             <div data-aos="fade-up" className="relative z-10 mb-10 rounded-2xl overflow-hidden border border-gray-800">
               <iframe
-                src="https://map.naver.com/p/entry/place/2003734983?c=15.00,0,0,0,dh"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=128.975%2C35.149%2C128.987%2C35.156&layer=mapnik&marker=35.1523%2C128.9808"
                 width="100%"
-                height="300"
+                height="280"
                 style={{ border: 0 }}
-                allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="새차만들기 네이버 지도"
+                title="새차만들기 위치 지도"
               />
               <a
                 href={naverPlaceLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("outbound_click", { destination: "naver_map_embed" })}
-                className="block bg-[#03C75A] text-white text-center py-3 font-bold text-sm hover:bg-[#02b351] transition-colors"
+                className="block bg-[#03C75A] text-white text-center py-3.5 font-bold text-sm hover:bg-[#02b351] transition-colors"
               >
                 <span className="flex items-center justify-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  네이버 플레이스에서 보기 →
+                  네이버 플레이스에서 자세히 보기 →
                 </span>
               </a>
             </div>
