@@ -49,57 +49,53 @@ export default function Home() {
       options: [
         { label: "✨ 외부 광택", value: "광택" },
         { label: "💨 스팀세차", value: "스팀세차" },
-        { label: "🧹 실내세차", value: "실내세차" },
+        { label: "🧹 실내클리닝", value: "실내클리닝" },
         { label: "🛡️ 유리막코팅", value: "유리막코팅" },
       ],
     },
     광택: {
-      question: "차량 크기를 선택해주세요.",
+      question: "프리미엄 광택은 차량 상태에 따라 견적이 달라집니다.",
       options: [
-        { label: "소형차 (모닝·아반떼 등)", value: "소형" },
-        { label: "중형·SUV (쏘나타·투싼 등)", value: "중형" },
-        { label: "대형·수입차", value: "대형" },
+        { label: "📞 전화로 견적 문의", value: "전화문의" },
       ],
     },
     스팀세차: {
       question: "차량 크기를 선택해주세요.",
       options: [
-        { label: "소형차 (모닝·아반떼 등)", value: "소형" },
-        { label: "중형·SUV (쏘나타·투싼 등)", value: "중형" },
-        { label: "대형·수입차", value: "대형" },
+        { label: "경차 (모닝·스파크 등)", value: "경차" },
+        { label: "소형차 (아반떼·K3 등)", value: "소형" },
+        { label: "중형차 (쏘나타·K5 등)", value: "중형" },
+        { label: "대형·SUV (그랜저·투싼 등)", value: "대형" },
       ],
     },
-    실내세차: {
+    실내클리닝: {
       question: "차량 크기를 선택해주세요.",
       options: [
-        { label: "소형차 (모닝·아반떼 등)", value: "소형" },
-        { label: "중형·SUV (쏘나타·투싼 등)", value: "중형" },
-        { label: "대형·수입차", value: "대형" },
+        { label: "경차 (모닝·스파크 등)", value: "경차" },
+        { label: "소형차 (아반떼·K3 등)", value: "소형" },
+        { label: "중형차 (쏘나타·K5 등)", value: "중형" },
+        { label: "대형·SUV (그랜저·투싼 등)", value: "대형" },
       ],
     },
     유리막코팅: {
-      question: "차량 크기를 선택해주세요.",
+      question: "유리막코팅은 차량 상태에 따라 견적이 달라집니다.",
       options: [
-        { label: "소형차 (모닝·아반떼 등)", value: "소형" },
-        { label: "중형·SUV (쏘나타·투싼 등)", value: "중형" },
-        { label: "대형·수입차", value: "대형" },
+        { label: "📞 전화로 견적 문의", value: "전화문의" },
       ],
     },
   };
 
   const chatResults: Record<string, { title: string; price: string; note: string }> = {
-    "광택_소형": { title: "소형차 외부 광택", price: "15~20만원대", note: "컴파운드+폴리싱 · 약 3~4시간 소요" },
-    "광택_중형": { title: "중형·SUV 외부 광택", price: "20~30만원대", note: "컴파운드+폴리싱 · 약 4~6시간 소요" },
-    "광택_대형": { title: "대형·수입차 외부 광택", price: "30~50만원대", note: "프리미엄 약품 사용 · 당일 상담" },
-    "스팀세차_소형": { title: "소형차 스팀세차", price: "3~5만원대", note: "고온 스팀 살균 · 약 1시간 소요" },
-    "스팀세차_중형": { title: "중형·SUV 스팀세차", price: "5~7만원대", note: "고온 스팀 살균 · 약 1~2시간 소요" },
-    "스팀세차_대형": { title: "대형·수입차 스팀세차", price: "7~10만원대", note: "고온 스팀 살균 · 꼼꼼 작업" },
-    "실내세차_소형": { title: "소형차 실내세차", price: "5~8만원대", note: "시트·매트·천장 클리닝 포함" },
-    "실내세차_중형": { title: "중형·SUV 실내세차", price: "8~12만원대", note: "시트·매트·천장 클리닝 포함" },
-    "실내세차_대형": { title: "대형·수입차 실내세차", price: "12~18만원대", note: "가죽 시트 전용 케어 포함" },
-    "유리막코팅_소형": { title: "소형차 유리막코팅", price: "30~50만원대", note: "광택 포함 · 지속 6개월~1년" },
-    "유리막코팅_중형": { title: "중형·SUV 유리막코팅", price: "50~80만원대", note: "광택 포함 · 지속 6개월~1년" },
-    "유리막코팅_대형": { title: "대형·수입차 유리막코팅", price: "80~120만원대", note: "프리미엄 코팅 · 당일 상담" },
+    "광택_전화문의": { title: "프리미엄 외부 광택", price: "별도 문의", note: "차량 상태에 따라 맞춤 견적 · 전화 상담 추천" },
+    "스팀세차_경차": { title: "경차 스팀세차", price: "5만원부터~", note: "고온 스팀 살균 · 탈취 효과" },
+    "스팀세차_소형": { title: "소형차 스팀세차", price: "6만원부터~", note: "고온 스팀 살균 · 탈취 효과" },
+    "스팀세차_중형": { title: "중형차 스팀세차", price: "7만원부터~", note: "고온 스팀 살균 · 꼼꼼 작업" },
+    "스팀세차_대형": { title: "대형·SUV 스팀세차", price: "8만원부터~", note: "고온 스팀 살균 · 꼼꼼 작업" },
+    "실내클리닝_경차": { title: "경차 실내클리닝", price: "5만원부터~", note: "시트·매트·천장 클리닝 포함" },
+    "실내클리닝_소형": { title: "소형차 실내클리닝", price: "6만원부터~", note: "시트·매트·천장 클리닝 포함" },
+    "실내클리닝_중형": { title: "중형차 실내클리닝", price: "7만원부터~", note: "시트·매트·천장 클리닝 포함" },
+    "실내클리닝_대형": { title: "대형·SUV 실내클리닝", price: "8만원부터~", note: "시트·매트·천장 클리닝 포함" },
+    "유리막코팅_전화문의": { title: "유리막코팅", price: "별도 문의", note: "차량 상태에 따라 맞춤 견적 · 전화 상담 추천" },
   };
 
   const handleChatSelect = useCallback((value: string) => {
@@ -525,18 +521,49 @@ export default function Home() {
             </p>
           </div>
 
-          <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-8">
+          {/* 가격표 테이블 */}
+          <div data-aos="fade-up" className="mb-8 overflow-x-auto">
+            <table className="w-full max-w-2xl mx-auto border-collapse">
+              <thead>
+                <tr>
+                  <th className="bg-blue-600 text-white font-bold text-sm md:text-base py-4 px-4 rounded-tl-xl">차종</th>
+                  <th className="bg-blue-600 text-white font-bold text-sm md:text-base py-4 px-4">
+                    <div className="flex items-center justify-center gap-1.5"><Droplets className="w-4 h-4" /> 스팀세차</div>
+                  </th>
+                  <th className="bg-blue-600 text-white font-bold text-sm md:text-base py-4 px-4 rounded-tr-xl">
+                    <div className="flex items-center justify-center gap-1.5"><Paintbrush className="w-4 h-4" /> 실내클리닝</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { type: "경차", steam: "5만원부터~", interior: "5만원부터~" },
+                  { type: "소형", steam: "6만원부터~", interior: "6만원부터~" },
+                  { type: "중형", steam: "7만원부터~", interior: "7만원부터~" },
+                  { type: "대형", steam: "8만원부터~", interior: "8만원부터~" },
+                ].map((row, i) => (
+                  <tr key={i} className={`border-b border-gray-800 ${i % 2 === 0 ? "bg-black" : "bg-[#111]"}`}>
+                    <td className="py-4 px-4 text-center font-bold text-blue-400 text-sm md:text-base">{row.type}</td>
+                    <td className="py-4 px-4 text-center text-gray-200 font-semibold text-sm md:text-base">{row.steam}</td>
+                    <td className="py-4 px-4 text-center text-gray-200 font-semibold text-sm md:text-base">{row.interior}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* 프리미엄 서비스 안내 */}
+          <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mb-8 max-w-2xl mx-auto">
             {[
-              { icon: <Sparkles className="w-8 h-8" />, title: "외부 광택", desc: "컴파운드+폴리싱\n잔기스 제거·광택 복원", highlight: "새 차 같은 광택" },
-              { icon: <Droplets className="w-8 h-8" />, title: "스팀세차", desc: "고온 스팀 살균\n외부·엔진룸 세차", highlight: "살균·탈취 효과" },
-              { icon: <ShieldCheck className="w-8 h-8" />, title: "유리막코팅", desc: "프리미엄 코팅제\n발수·광택 장기 유지", highlight: "6개월~1년 유지" },
+              { icon: <Sparkles className="w-7 h-7" />, title: "프리미엄 광택", desc: "컴파운드+폴리싱 · 잔기스 제거", highlight: "별도 문의" },
+              { icon: <ShieldCheck className="w-7 h-7" />, title: "유리막코팅", desc: "프리미엄 코팅 · 발수·광택 유지", highlight: "별도 문의" },
             ].map((item, i) => (
-              <div key={i} className="bg-black p-6 md:p-8 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-all text-center group">
-                <div className="w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-5 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <div key={i} className="bg-black p-6 rounded-2xl border border-gray-800 hover:border-blue-500/30 transition-all text-center group">
+                <div className="w-14 h-14 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                   {item.icon}
                 </div>
-                <h3 className="text-lg md:text-xl font-bold mb-2">{item.title}</h3>
-                <p className="text-gray-400 text-sm whitespace-pre-line mb-4">{item.desc}</p>
+                <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                <p className="text-gray-400 text-sm mb-3">{item.desc}</p>
                 <span className="inline-block bg-blue-600/10 text-blue-500 font-bold text-sm px-4 py-1.5 rounded-full border border-blue-600/20">
                   {item.highlight}
                 </span>
@@ -547,7 +574,7 @@ export default function Home() {
           <div data-aos="fade-up" className="text-center">
             <a
               href={`tel:${phoneNumber.replace(/-/g, "")}`}
-              onClick={() => trackEvent("phone_call", { location: "service_menu" })}
+              onClick={() => trackEvent("phone_call", { location: "pricing" })}
               className="inline-flex items-center gap-2.5 bg-blue-600 text-white font-bold text-base md:text-lg py-4 px-10 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.25)]"
             >
               <Phone className="w-5 h-5" />
@@ -716,7 +743,7 @@ export default function Home() {
                 <ul className="space-y-3 text-gray-300 text-sm md:text-[15px]">
                   <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 평일 09:00 ~ 19:00</li>
                   <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 예약 우선 접수</li>
-                  <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 위치: <span className="text-blue-500 font-bold">부산 사상구</span></li>
+                  <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 위치: <span className="text-blue-500 font-bold">부산 사상구 감전동</span></li>
                 </ul>
               </div>
               <div className="bg-[#1a1a1a]/80 p-6 rounded-2xl border border-gray-800 hover:border-gray-700 transition-colors">
@@ -727,10 +754,32 @@ export default function Home() {
                   <h3 className="font-bold text-base md:text-lg">오시는 길</h3>
                 </div>
                 <ul className="space-y-3 text-gray-300 text-sm md:text-[15px]">
-                  <li className="flex items-start gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0 mt-0.5" /> 부산 사상구 (상세주소 추후 안내)</li>
+                  <li className="flex items-start gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0 mt-0.5" /> 부산 사상구 낙동대로829 (감전동)</li>
                   <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 주차 공간 완비</li>
-                  <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 방문 전 전화 예약</li>
+                  <li className="flex items-center gap-2.5"><CheckCircle2 className="w-4 h-4 text-blue-500/60 flex-shrink-0" /> 엄궁동·하단동·학장동·명지동 인근</li>
                 </ul>
+                <div className="flex gap-2 mt-4">
+                  <a
+                    href={naverPlaceLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("outbound_click", { destination: "naver_place_contact" })}
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-green-600/15 text-green-400 text-sm font-bold py-2.5 rounded-xl border border-green-600/20 hover:bg-green-600/25 transition-all"
+                  >
+                    <MapPin className="w-4 h-4" />
+                    네이버 지도
+                  </a>
+                  <a
+                    href={blogLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("outbound_click", { destination: "blog_contact" })}
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-blue-600/15 text-blue-400 text-sm font-bold py-2.5 rounded-xl border border-blue-600/20 hover:bg-blue-600/25 transition-all"
+                  >
+                    <Globe className="w-4 h-4" />
+                    블로그
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -761,7 +810,7 @@ export default function Home() {
             </div>
             <div className="space-y-2 text-sm text-gray-400">
               <p>부산 사상 자동차 광택·세차 전문</p>
-              <p>주소: 부산 사상구 (상세주소 추후 안내)</p>
+              <p>주소: 부산 사상구 낙동대로829 (감전동)</p>
               <p>업종: 자동차 광택, 스팀세차, 실내세차, 유리막코팅</p>
               <div className="flex gap-3 mt-3">
                 <a href={naverPlaceLink} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("outbound_click", { destination: "naver_place" })} className="text-blue-400 hover:text-blue-300 transition-colors">
