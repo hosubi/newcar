@@ -509,8 +509,18 @@ export default function Home() {
       </section>
 
       {/* ━━━ 3-2. PRICING ━━━ */}
-      <section className="py-24 px-5 bg-[#181818]">
-        <div className="max-w-5xl mx-auto">
+      <section
+        className="py-24 px-5 relative"
+        style={{
+          backgroundImage: "url('/hero-bg.webp')",
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* 어두운 오버레이 */}
+        <div className="absolute inset-0 bg-black/85 z-0" />
+        <div className="max-w-5xl mx-auto relative z-10">
           <div data-aos="fade-up" className="text-center mb-14">
             <p className="text-blue-500 text-sm font-bold tracking-widest mb-4">PRICING</p>
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-snug">
